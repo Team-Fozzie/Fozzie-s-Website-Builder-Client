@@ -3,6 +3,8 @@
 const ENV = {};
 ENV.apiUrl = 'https://fozzie-web-builder.herokuapp.com';
 
+var app = app || {};
+
 function Test() {
     $.get(`${ENV.apiUrl}/users`)
         .then(results => {
