@@ -1,0 +1,72 @@
+/* The following is specifically for the elements on our web builder*/
+.text-container {
+    margin: 0 auto;
+    margin-bottom: 1em;
+    width: 90%;
+    text-align: center;
+}
+.cta-container {
+    padding: 1em 0;
+}
+.btn-center {
+    height:70px;
+    margin:auto 0;
+}
+.btn-cta, .lite-cta {
+    text-decoration: none;
+    text-transform: uppercase;
+    padding:12px;
+    transition:220ms;
+    width:150px;
+    color: black;
+}
+.btn-cta {
+    border:1px solid black;
+    border-radius: 10px;
+    background-color: white;
+}
+.btn-cta:hover {
+    color: white;
+    background-color: black;
+}
+.lite-cta:hover {
+    color: red;
+}
+
+.text-overlay {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  left: 0;
+  bottom: 0;
+  transform: translateY(-50%);
+}
+/*This is CSS for the user inputs*/
+
+section.template {
+  border: dashed 2px gray;
+  height: 250px;
+}
+section.template i {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  font-size: 5em;
+  transform: translate(-50%, -50%);
+  color: gray;
+  box-shadow: 1px 1px 1px 1px #888;
+  border-radius: 50%;
+}
+section.template i:active {
+  box-shadow: 1px 1px 1px 3px #888;
+}
+#user-input-menu {
+  position: fixed;
+  height: 100vh;
+  width: 33%;
+  top: 0;
+  left: -33%;
+  background: #06aaf6;
+  z-index: 5;
+  transition: all .2s ease;
+}
