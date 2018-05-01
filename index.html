@@ -32,54 +32,100 @@
         </article>
       </script>
     <script id="template-one" type="text/x-handlebars-template">
-        <article>
-            <img src='http://via.placeholder.com/480x350' alt="img alt">
-        </article> 
+        <section class="cols-1">
+            <article>
+                <img src='http://via.placeholder.com/480x350' alt="img alt">
+            </article> 
+        </section>
     </script>
     <script id="template-two" type="text/x-handlebars-template">
-            <section class="{{class}}">
+            <section class="cols-2">
                 <article>
                     <img src='http://via.placeholder.com/480x350' alt="img alt">
+                </article>
+                <article>
                     <img src='http://via.placeholder.com/480x350' alt="img alt">
-                </article>   
+                </article>
             </section>
     </script>
     <script id="template-three" type="text/x-handlebars-template">
-        <section class="{{class}}">
+        <section class="cols-3">
             <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
+            </article>
+            <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
+            </article>
+            <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
-            </article>  
+            </article>
         </section>
     </script>
     <script id="template-four" type="text/x-handlebars-template">
-        <section class="{{class}}">
-            <div class="layout layout-text-left">
-                        <img src='http://via.placeholder.com/480x350' alt="img alt">
-                        <div class="text-container">
-                            <h2>Title</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                                it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                                PageMaker including versions of Lorem Ipsum</p>
-                            <div class="cta-container">
-                                <div class="btn-center">
-                                    <a class="lite-cta" href="#">Lite CTA</a>
-                                    <a class="btn btn-cta" href="#">Main CTA</a>
-                                </div>
-                            </div>
-                        </div>
-                    </div>   
-            </section>
-        </script>
+        <section class="cols-2">
+            <article>
+                <img src='http://via.placeholder.com/480x480' alt="img alt">
+                <div class="text-container">
+                    <h2>Title</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                    <div class="cta-container">
+                        <a class="lite-cta" href="#">Lite CTA</a>
+                        <a class="btn-cta" href="#">Main CTA</a>
+                    </div>
+                </div>
+            </article>
+            <article>
+                <img src='http://via.placeholder.com/480x480' alt="img alt">
+                <div class="text-container">
+                    <h2>Title</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                    <div class="cta-container">
+                        <a class="lite-cta" href="#">Lite CTA</a>
+                        <a class="btn-cta" href="#">Main CTA</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </script>
     <script id="template-five" type="text/x-handlebars-template">
-            <section class="{{class}}">
+            <section class="cols-3">
                 <article>
                     <img src='http://via.placeholder.com/480x480' alt="img alt">
-                    <div class="text-container text-overlay">
+                    <div class="text-container">
+                        <h2>Title</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book.
+                        </p>
+                        <div class="cta-container">
+                            <a class="lite-cta" href="#">Lite CTA</a>
+                            <a class="btn-cta" href="#">Main CTA</a>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <img src='http://via.placeholder.com/480x480' alt="img alt">
+                    <div class="text-container">
+                        <h2>Title</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book.
+                        </p>
+                        <div class="cta-container">
+                            <a class="lite-cta" href="#">Lite CTA</a>
+                            <a class="btn-cta" href="#">Main CTA</a>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <img src='http://via.placeholder.com/480x480' alt="img alt">
+                    <div class="text-container">
                         <h2>Title</h2>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                             dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
@@ -95,7 +141,6 @@
         </script>
 </head>
 <body>
-    <p>HELLO WORLD!</p>
     <nav>
         <ul>
             <li class="" href=>Sign In</li>
@@ -119,6 +164,8 @@
                         <img src="http://via.placeholder.com/46x50" alt="template thumbnail image">
                     </div>
                 </li>
+                <li data-cols="template4">Template 4</li>
+                <li data-cols="template5">Template 5</li>
             </ul>
         </nav>
         <section id="web-row-container"></section>

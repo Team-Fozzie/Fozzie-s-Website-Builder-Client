@@ -14,6 +14,8 @@ $('#user-input-menu li').on('click', function () {
   
   project.allSections[positionCounter].body = body;
   project.renderAll($('#web-row-container'));
+
+  project.updateProject();
   $('#user-input-menu').css('left', '-33%');
 
 
