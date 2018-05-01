@@ -29,7 +29,7 @@ var app = app || {};
   }
 // updating the project
 Project.prototype.updateProject = function(){
-  Section.all.forEach(e => htmlArr.push(e.body));
+  this.allSections.forEach(e => htmlArr.push(e.body));
   let htmlStr = JSON.stringify(htmlArr);
   $.ajax({
       url: `/app/data/${this.project_id}`,
