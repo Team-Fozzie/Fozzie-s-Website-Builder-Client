@@ -2,17 +2,29 @@
 
 var app = app || {};
 
+var positionCounter = -1;
 
 $('#add-new-section').on('click', createSection);
 
 $('#user-input-menu li').on('click', function () {
+  // console.log();
+  let templateNum = $(this).data('cols');
+  let body = project.allSections[positionCounter].body 
+  body = app.templates.templateToHtml(templateNum, body);
+  
+  project.allSections[positionCounter].body = body;
+  project.renderAll($('#web-row-container'));
+  $('#user-input-menu').css('left', '-33%');
+
 
 });
 
 function createSection() {
-  var section = new app.Section('1', '<p>Hello</p>');
+  // section(order, body)
+  let section = new app.Section('1', '<p>Hello</p>');
   project.allSections.push(section);
-  project.renderAll($('#web-builder-view'));
+  positionCounter++;
+  project.renderAll($('#web-row-container'));
 
   $('#user-input-menu').css('left', '0');
 }

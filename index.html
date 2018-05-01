@@ -13,9 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <script id="section-template" type="text/x-handlebars-template">
-        <section>
-            {{{body}}}    
-        </section>
+        {{{body}}}    
     </script> 
     <script id="web-builder-article-template" type="text/x-handlebars-template">
         <article>
@@ -34,11 +32,9 @@
         </article>
       </script>
     <script id="template-one" type="text/x-handlebars-template">
-        <section class="{{class}}">
-            <article>
-                <img src='http://via.placeholder.com/480x350' alt="img alt">
-            </article>   
-        </section>
+        <article>
+            <img src='http://via.placeholder.com/480x350' alt="img alt">
+        </article> 
     </script>
     <script id="template-two" type="text/x-handlebars-template">
             <section class="{{class}}">
@@ -76,8 +72,7 @@
                                 </div>
                             </div>
                         </div>
-                    </div>
-                }}}    
+                    </div>   
             </section>
         </script>
     <script id="template-five" type="text/x-handlebars-template">
@@ -110,14 +105,14 @@
     <section id="web-builder-view">
         <nav id="user-input-menu">
             <ul>
-                <li data-cols="1">
+                <li data-cols="template1">
                     <img src="http://via.placeholder.com/140x50" alt="template thumbnail image">
                 </li>
-                <li data-cols="2">
+                <li data-cols="template2">
                     <img src="http://via.placeholder.com/70x50" alt="template thumbnail image">
                     <img src="http://via.placeholder.com/70x50" alt="template thumbnail image">
                 </li>
-                <li data-cols="3">
+                <li data-cols="template3">
                     <div>
                         <img src="http://via.placeholder.com/46x50" alt="template thumbnail image">
                         <img src="http://via.placeholder.com/46x50" alt="template thumbnail image">
@@ -126,6 +121,7 @@
                 </li>
             </ul>
         </nav>
+        <section id="web-row-container"></section>
         <section id="add-new-section" class="template">
             <div>
                 <i class="fas fa-plus-circle"></i>
@@ -138,6 +134,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.19/marked.min.js"></script>
     <script src="scripts/model/model.js"></script>
+    <script src="scripts/model/templateModel.js"></script>
     <script src="scripts/view/view.js"></script>
     <script src="scripts/controller/controller.js"></script>
 

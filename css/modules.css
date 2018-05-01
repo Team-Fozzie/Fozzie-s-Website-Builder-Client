@@ -69,4 +69,5 @@ section.template i:active {
   background: #06aaf6;
   z-index: 5;
   transition: all .2s ease;
+  opacity: .8;
 }
