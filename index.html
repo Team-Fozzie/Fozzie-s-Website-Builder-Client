@@ -6,15 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Web Builder</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
-
-<script id="section-template" type="text/x-handlebars-template">
-    <section>
-        {{{body}}}    
-    </section>
-</script> 
-
-
+    <link rel="stylesheet" href="../css/reset.css">
+    <link rel="stylesheet" href="../css/base.css">
+    <link rel="stylesheet" href="../css/layout.css">
+    <link rel="stylesheet" href="../css/modules.css">
+    <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+    <script id="section-template" type="text/x-handlebars-template">
+        <section>
+            {{{body}}}    
+        </section>
+    </script> 
+    <script id="web-builder-article-template" type="text/x-handlebars-template">
+        <article>
+            <img src='http://via.placeholder.com/480x480' alt="img alt">
+              <div class="text-container text-overlay">
+                <h2>Title</h2>
+                <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                  dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen
+                  book.
+            </p>
+                <div class="cta-container">
+                  <a class="lite-cta" href="#">Lite CTA</a>
+                  <a class="btn-cta" href="#">Main CTA</a>
+                </div>
+              </div>
+        </article>
+      </script>
 </head>
 
 <body>
@@ -26,7 +43,20 @@
             <li class="" href=>Log In</li>
         </ul>
     </nav>
-    <section id="builder-view"></section>
+    <section id="builder-view">
+        <nav id="user-input-menu">
+            <ul>
+                <li>
+                    <img src="http://via.placeholder.com/480x480" alt="template thumbnail image">
+                </li>
+            </ul>
+        </nav>
+        <section id="add-new-section" class="template">
+            <div>
+                <i class="fas fa-plus-circle"></i>
+            </div>
+        </section>
+    </section>
     <section id="site-view"></section>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
