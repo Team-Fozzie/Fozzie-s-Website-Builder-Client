@@ -1,7 +1,10 @@
 'use strict';
 // const ENV = '';
 const ENV = {};
-ENV.apiUrl = 'https://fozzie-web-builder.herokuapp.com';
+ENV.isProduction = window.location.protocol === 'https:';
+ENV.productionApiUrl = 'https://fozzie-web-builder.herokuapp.com'
+ENV.developmentApiUrl = 'http://localhost:3000';
+ENV.apiUrl = ENV.isProduction ? ENV.productionApiUrl : ENV.developmentApiUrl;
 
 var app = app || {};
 
@@ -14,28 +17,6 @@ function Test() {
     // .catch(console.error());
 }
 
-// updating the project
-function updateProject(project_id) {
-    Section.all.forEach(e => htmlArr.push(e.body));
-    let htmlStr = JSON.stringify(htmlArr);
-    $.ajax({
-        url: `/app/data/${project_id}`,
-        method: 'PUT',
-        data: { html: htmlStr }
-    })
-        .then(callback);
-}
-
-// getting the info of a specifically selected project from the project page
-function getProject() {
-    $.get(`/app/data/${project}`)
-        .then(results => {
-            let htmlArr = JSON.parse(results.html);
-            let Section.all = htmlArr.map((e, i) => {
-                return new Section(i, e)
-            })
-        })
-}
 Test();
 // function testCallback(results) {
 //     $('p').text(results);

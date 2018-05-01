@@ -28,11 +28,12 @@ var app = app || {};
     return template(this);
   }
 // updating the project
-Project.prototype.updateProject = function(){
+Project.prototype.updateProject = function(callback){
+  let htmlArr = [];
   this.allSections.forEach(e => htmlArr.push(e.body));
   let htmlStr = JSON.stringify(htmlArr);
   $.ajax({
-      url: `/app/data/${this.project_id}`,
+      url: `${ENV.apiUrl}/app/data/${this.project_id}`,
       method: 'PUT',
       data: { html: htmlStr }
   })
