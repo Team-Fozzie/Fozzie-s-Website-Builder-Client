@@ -1,10 +1,10 @@
 var app = app || {};
 
 //TODO: Test the below functions
-(function(model) {
-  function Section(){
-    this.order = 0;
-    this.html = '';
+(function(module) {
+  function Section(order, body, section){
+    this.order = order;
+    this.body = body;
   }
 
   Section.all = [];
@@ -12,13 +12,14 @@ var app = app || {};
   Section.renderAll = function(startElement) {
     Section.sortAll();
     Section.all.forEach(e => {
-      e.render(startElement)
-      startElement = e;
+      $(startElement).append(e.render());
     })
   }
 
-  Section.prototype.render = function (previousElement){
-    previousElement.after(this.html);
+  Section.prototype.render = function (){
+    var template = Handlebars.compile($('#section-template').text());
+    this.body = marked(this.body);
+    return template(this);
   }
 
   module.Section = Section;

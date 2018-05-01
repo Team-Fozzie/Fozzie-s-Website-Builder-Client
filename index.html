@@ -8,20 +8,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <!-- <link rel="stylesheet" type="text/css" media="screen" href="main.css" /> -->
 
-    <!-- this tempalte is just to help us start -->
-    <!-- <script id="article-template" type="text/x-handlebars-template">
-        <article class="clearfix" data-author="{{author}}" data-category="{{category}}">
-          <header>
-            <h1>{{title}}</h1>
-            <div class="byline">
-              By <address><a href="{{authorUrl}}">{{author}}</a></address>
-              {{publishStatus}}
-            </div>
-          </header>
-          <section class="article-body">{{{body}}}</section>
-          <a href="#" class="read-on">Read on &rarr;</a>
-        </article>
-      </script> -->
+<script id="section-template" type="text/x-handlebars-template">
+    <section>
+        {{{body}}}    
+    </section>
+</script> 
+
 
 </head>
 
@@ -34,7 +26,9 @@
             <li class="" href=>Log In</li>
         </ul>
     </nav>
-
+    <section id="builder-view"></section>
+    <section id="site-view"></section>
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="scripts/model/model.js"></script>
