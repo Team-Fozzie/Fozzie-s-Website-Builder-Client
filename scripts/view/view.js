@@ -7,7 +7,7 @@ const defaultBody = `<section class="cols-1"><article><img src='http://via.place
 var app = app || {};
 
 (function(module) {
-  const = webBuilderView = {};
+  var webBuilderView = {};
 
   var positionCounter = project.allSections.length - 1;
 
