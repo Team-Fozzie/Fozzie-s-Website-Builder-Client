@@ -1,43 +1,52 @@
 'use strict';
 
+//TODO: Making Default Body
+const defaultBody = `<section class="cols-1"><article><img src='http://via.placeholder.com/480x350' alt="img alt"></article></section>`;
+
+//TODO: make selection class that highlights section you are working on - add and remove class to users currently selected thing
 var app = app || {};
 
-var positionCounter = -1;
+(function(module) {
+  const = webBuilderView = {};
 
-$('#add-new-section').on('click', createSection);
+  var positionCounter = project.allSections.length - 1;
 
-$('#user-input-menu li').on('click', function () {
-  // console.log();
-  let templateNum = $(this).data('cols');
-  let body = project.allSections[positionCounter].body 
-  body = app.templates.templateToHtml(templateNum, body);
-  
-  project.allSections[positionCounter].body = body;
-  project.renderAll($('#web-row-container'));
+  $('#add-new-section').on('click', createSection);
 
-  project.updateProject();
-  $('#user-input-menu').css('left', '-33%');
+  $('#user-input-menu li').on('click', assignTemplate);
 
+  function assignTemplate() {
+    let templateNum = $(this).data('cols');
+    let body = project.allSections[positionCounter].body
+    body = app.templates.templateToHtml(templateNum, body);
 
-});
+    project.allSections[positionCounter].body = body;
+    project.renderAll($('#web-row-container'));
 
-function createSection() {
-  // section(order, body)
-  let section = new app.Section('1', '<p>Hello</p>');
-  project.allSections.push(section);
-  positionCounter++;
-  project.renderAll($('#web-row-container'));
+    project.updateProject();
+    $('#user-input-menu').css('left', '-33%');
+  }
 
-  $('#user-input-menu').css('left', '0');
-}
+  function createSection() {
+    positionCounter++;
+    let section = new app.Section(positionCounter, defaultBody);
 
-function initWebBuilderViewToHtml() {
-  var source = document.getElementById("web-builder-article-template").innerHTML;
-  var template = Handlebars.compile(source);
-  return template;
-};
+    project.allSections.push(section);
+    project.renderAll($('#web-row-container'));
 
-function initWebBuilderView() {
-  $('section').hide();
-  $('section#web-builder-view').show();
-} 
+    $('#user-input-menu').css('left', '0');
+  }
+
+  function initWebBuilderViewToHtml() {
+    var source = document.getElementById("web-builder-article-template").innerHTML;
+    var template = Handlebars.compile(source);
+    return template;
+  };
+
+  function initWebBuilderView() {
+    $('section').hide();
+    $('section#web-builder-view').show();
+  } 
+
+})(app)
+
