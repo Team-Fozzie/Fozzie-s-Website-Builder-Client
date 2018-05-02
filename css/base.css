@@ -11,6 +11,5 @@ body {
 section {
   overflow: auto;
   margin-bottom: 2em;  
-  padding-bottom: 2em;
   position: relative;
 }
