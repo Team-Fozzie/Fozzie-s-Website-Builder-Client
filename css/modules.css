@@ -71,3 +71,18 @@ section.template i:active {
   transition: all .2s ease;
   opacity: .8;
 }
+
+/*HOME VIEW CSS STYLING*/
+#home-view > img {
+    width: 200px;
+    margin: 0 auto;
+    display: block;
+}
+#home-view > form > input {
+    display: block;
+    margin: 1em auto;
+}
+#home-view > form > button {
+    margin: 0 auto;
+    display: block;
+}

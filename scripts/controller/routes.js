@@ -2,7 +2,7 @@
 
 
 //landing on home page
-page("/", () => app.initHomeView());
+page("/", () => app.homeView.initHomeView());
 //loading a previous project
 page("/create/:id", ctx => app.createView.initCreateView(ctx));
 //when are creating a new project

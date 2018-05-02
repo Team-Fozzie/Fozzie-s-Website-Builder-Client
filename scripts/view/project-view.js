@@ -1,9 +1,9 @@
 'use strict';
 
-let app = app || {};
+var app = app || {};
 
 (function (module) {
-    const projectView = {};
+    var projectView = {};
 
     projectView.initProjectView = function () {
         $('everything else').hide();

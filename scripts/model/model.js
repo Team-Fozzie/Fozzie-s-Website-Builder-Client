@@ -11,6 +11,11 @@ var app = app || {};
     this.order = order;
     this.body = body;
   }
+  function User(username, email, password) {
+    this.username = username;
+    this.email = email;
+    this.password = password;
+  }
 
   
   //startElement must be a jQuery element
