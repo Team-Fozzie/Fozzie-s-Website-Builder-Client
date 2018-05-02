@@ -41,22 +41,29 @@ Project.prototype.updateProject = function(callback){
 
 // getting the info of a specifically selected project from the project page
 Project.prototype.getProject= function() {
-  $.get(`${ENV.apiUrl}/app/data/${project}`)
-      .then(function(results) {
-          let htmlArr = JSON.parse(results.html);
+  $.get(`${ENV.apiUrl}/app/project/${this.project_id}`)
+      .then(results => {
+          console.log(results[0]);
+          let htmlArr = JSON.parse(results[0].html);
+          console.log(htmlArr);
           this.allSections = htmlArr.map((e, i) => {
               return new Section(i, e)
           })
-          .catch(console.error);
-      })
+          console.log('this', this);
+          console.log(this.allSections);
+      }).catch(console.error);
 }
-Project.getProjects = function(user_id){
-  $.get(`${ENV.apiUrl}/app/project/${user_id}`)
-  .then(results => {
-    return Object.keys(results);
-  })
-  .catch(console.error);
-}
+// Project.getProjects = function(user_id){
+//   // $.get(`${ENV.apiUrl}/app/data/${user_id}`)
+//   // .then(results => {
+//   //   var proj = new Project(results[0].project_id, results[0].project_name);
+//   //   let htmlArr = JSON.parse(results[0].html);
+//   //   proj.allSections = htmlArr.map( (e,i) => new Section(i, e));
+//   //   //FIXME: WHY DOESNT THE RETURN RETURN STUFF!
+//   //   console.log(proj)
+//   //   return proj;
+//   })
+// }
   module.Section = Section;
   module.Project = Project;
 
@@ -69,7 +76,7 @@ Project.getProjects = function(user_id){
 
 //TODO: TEST Project --- REMEMBER TO DELETE
 
-var project = new app.Project( 2, 'BUSMALL MEMORY GAME');
+var project = new app.Project( 1, 'BUSMALL MEMORY GAME');
 
 
 
