@@ -1,9 +1,9 @@
 'use strict';
 
-let app = app || {};
+var app = app || {};
 
 (function (module) {
-    const createView = {};
+    var createView = {};
 
     createView.initCreateView = function () {
         $('everything else').hide();

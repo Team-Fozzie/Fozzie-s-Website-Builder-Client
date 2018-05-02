@@ -2,13 +2,13 @@
 
 
 //landing on home page
-page("/", () => app.initHomeView());
+page("/", () => app.homeView.initHomeView());
 //loading a previous project
 page("/create/:id", ctx => app.createView.initCreateView(ctx));
 //when are creating a new project
 page("/create", () => app.createView.initCreateView());
 //navigating to project view from homeview/sign-in or create a new account / might need ctx after login
-page("/project", () => app.projectView.initProjectView());
+page("/projects", () => app.projectView.initProjectView());
 //auth view that each of the other view use to check the login token lcoalstoage
 
 

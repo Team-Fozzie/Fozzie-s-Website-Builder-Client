@@ -140,6 +140,7 @@
             </section>
         </script>
 </head>
+<!-- THIS IS THE END OF THE HEAD AND BEGINNING OF THE BODY-->
 <body>
     <nav>
         <ul>
@@ -147,6 +148,18 @@
             <li class="" href=>Log In</li>
         </ul>
     </nav>
+    <section id="home-view">
+        <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
+        <form id="home-view-signup">
+            <input id="username" type="text" placeholder="username" required>
+            <input id="email" type="text" placeholder="email" required>
+            <input id="password" type="password" placeholder="password" >
+            
+            <button type="submit">Sign Up</button>
+        </form>
+
+
+    </section>
     <section id="web-builder-view">
         <nav id="user-input-menu">
             <ul>
@@ -178,12 +191,17 @@
     <section id="site-view"></section>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdn.rawgit.com/visionmedia/page.js/master/page.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.19/marked.min.js"></script>
+
     <script src="scripts/model/model.js"></script>
     <script src="scripts/model/templateModel.js"></script>
+    <script src="scripts/controller/controller.js"></script> 
     <script src="scripts/view/view.js"></script>
-    <script src="scripts/controller/controller.js"></script>
+    <script src="scripts/view/create-view.js"></script>
+    <script src="scripts/view/home-view.js"></script>
+    <script src="scripts/view/project-view.js"></script>
+    <script src="scripts/controller/routes.js"></script>
 
 </body>
 
