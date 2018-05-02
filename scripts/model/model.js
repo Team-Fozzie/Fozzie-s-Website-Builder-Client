@@ -24,7 +24,6 @@ var app = app || {};
 
   Section.prototype.render = function (){
     var template = Handlebars.compile($('#section-template').text());
-    this.body = marked(this.body);
     return template(this);
   }
 // updating the project
@@ -42,7 +41,7 @@ Project.prototype.updateProject = function(callback){
 
 // getting the info of a specifically selected project from the project page
 Project.prototype.getProject= function() {
-  $.get(`/app/data/${project}`)
+  $.get(`${ENV.apiUrl}/app/data/${project}`)
       .then(function(results) {
           let htmlArr = JSON.parse(results.html);
           this.allSections = htmlArr.map((e, i) => {
@@ -52,7 +51,7 @@ Project.prototype.getProject= function() {
       })
 }
 Project.getProjects = function(user_id){
-  $.get(`/app/project/${user_id}`)
+  $.get(`${ENV.apiUrl}/app/project/${user_id}`)
   .then(results => {
     return Object.keys(results);
   })
@@ -67,3 +66,10 @@ Project.getProjects = function(user_id){
   }
 
 })(app);
+
+//TODO: TEST Project --- REMEMBER TO DELETE
+
+var project = new app.Project( 2, 'BUSMALL MEMORY GAME');
+
+
+

@@ -13,9 +13,7 @@
     <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <script id="section-template" type="text/x-handlebars-template">
-        <section>
-            {{{body}}}    
-        </section>
+        {{{body}}}    
     </script> 
     <script id="web-builder-article-template" type="text/x-handlebars-template">
         <article>
@@ -34,57 +32,100 @@
         </article>
       </script>
     <script id="template-one" type="text/x-handlebars-template">
-        <section class="{{class}}">
+        <section class="cols-1">
             <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
-            </article>   
+            </article> 
         </section>
     </script>
     <script id="template-two" type="text/x-handlebars-template">
-            <section class="{{class}}">
+            <section class="cols-2">
                 <article>
                     <img src='http://via.placeholder.com/480x350' alt="img alt">
+                </article>
+                <article>
                     <img src='http://via.placeholder.com/480x350' alt="img alt">
-                </article>   
+                </article>
             </section>
     </script>
     <script id="template-three" type="text/x-handlebars-template">
-        <section class="{{class}}">
+        <section class="cols-3">
             <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
+            </article>
+            <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
+            </article>
+            <article>
                 <img src='http://via.placeholder.com/480x350' alt="img alt">
-            </article>  
+            </article>
         </section>
     </script>
     <script id="template-four" type="text/x-handlebars-template">
-        <section class="{{class}}">
-            <div class="layout layout-text-left">
-                        <img src='http://via.placeholder.com/480x350' alt="img alt">
-                        <div class="text-container">
-                            <h2>Title</h2>
-                            <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-                                standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled
-                                it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-                                typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-                                sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-                                PageMaker including versions of Lorem Ipsum</p>
-                            <div class="cta-container">
-                                <div class="btn-center">
-                                    <a class="lite-cta" href="#">Lite CTA</a>
-                                    <a class="btn btn-cta" href="#">Main CTA</a>
-                                </div>
-                            </div>
-                        </div>
+        <section class="cols-2">
+            <article>
+                <img src='http://via.placeholder.com/480x480' alt="img alt">
+                <div class="text-container">
+                    <h2>Title</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                    <div class="cta-container">
+                        <a class="lite-cta" href="#">Lite CTA</a>
+                        <a class="btn-cta" href="#">Main CTA</a>
                     </div>
-                }}}    
-            </section>
-        </script>
+                </div>
+            </article>
+            <article>
+                <img src='http://via.placeholder.com/480x480' alt="img alt">
+                <div class="text-container">
+                    <h2>Title</h2>
+                    <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                        dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                        specimen book.
+                    </p>
+                    <div class="cta-container">
+                        <a class="lite-cta" href="#">Lite CTA</a>
+                        <a class="btn-cta" href="#">Main CTA</a>
+                    </div>
+                </div>
+            </article>
+        </section>
+    </script>
     <script id="template-five" type="text/x-handlebars-template">
-            <section class="{{class}}">
+            <section class="cols-3">
                 <article>
                     <img src='http://via.placeholder.com/480x480' alt="img alt">
-                    <div class="text-container text-overlay">
+                    <div class="text-container">
+                        <h2>Title</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book.
+                        </p>
+                        <div class="cta-container">
+                            <a class="lite-cta" href="#">Lite CTA</a>
+                            <a class="btn-cta" href="#">Main CTA</a>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <img src='http://via.placeholder.com/480x480' alt="img alt">
+                    <div class="text-container">
+                        <h2>Title</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
+                            specimen book.
+                        </p>
+                        <div class="cta-container">
+                            <a class="lite-cta" href="#">Lite CTA</a>
+                            <a class="btn-cta" href="#">Main CTA</a>
+                        </div>
+                    </div>
+                </article>
+                <article>
+                    <img src='http://via.placeholder.com/480x480' alt="img alt">
+                    <div class="text-container">
                         <h2>Title</h2>
                         <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
                             dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type
@@ -100,7 +141,6 @@
         </script>
 </head>
 <body>
-    <p>HELLO WORLD!</p>
     <nav>
         <ul>
             <li class="" href=>Sign In</li>
@@ -110,22 +150,25 @@
     <section id="web-builder-view">
         <nav id="user-input-menu">
             <ul>
-                <li data-cols="1">
+                <li data-cols="template1">
                     <img src="http://via.placeholder.com/140x50" alt="template thumbnail image">
                 </li>
-                <li data-cols="2">
+                <li data-cols="template2">
                     <img src="http://via.placeholder.com/70x50" alt="template thumbnail image">
                     <img src="http://via.placeholder.com/70x50" alt="template thumbnail image">
                 </li>
-                <li data-cols="3">
+                <li data-cols="template3">
                     <div>
                         <img src="http://via.placeholder.com/46x50" alt="template thumbnail image">
                         <img src="http://via.placeholder.com/46x50" alt="template thumbnail image">
                         <img src="http://via.placeholder.com/46x50" alt="template thumbnail image">
                     </div>
                 </li>
+                <li data-cols="template4">Template 4</li>
+                <li data-cols="template5">Template 5</li>
             </ul>
         </nav>
+        <section id="web-row-container"></section>
         <section id="add-new-section" class="template">
             <div>
                 <i class="fas fa-plus-circle"></i>
@@ -138,6 +181,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.11/handlebars.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/0.3.19/marked.min.js"></script>
     <script src="scripts/model/model.js"></script>
+    <script src="scripts/model/templateModel.js"></script>
     <script src="scripts/view/view.js"></script>
     <script src="scripts/controller/controller.js"></script>
 
