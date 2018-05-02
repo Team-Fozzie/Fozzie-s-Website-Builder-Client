@@ -56,6 +56,7 @@ Project.getProjects = function(user_id){
     var proj = new Project(results[0].project_id, results[0].project_name);
     let htmlArr = JSON.parse(results[0].html);
     proj.allSections = htmlArr.map( (e,i) => new Section(i, e));
+    //FIXME: WHY DOESNT THE RETURN RETURN STUFF!
     console.log(proj)
     return proj;
   })
