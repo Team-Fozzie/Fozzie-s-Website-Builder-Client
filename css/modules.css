@@ -156,6 +156,22 @@ section.template i:active {
     margin: 0 auto;
     width: 90%;
 }
+.create-view-header {
+    background: #003459;
+    margin-bottom: 2em;
+    text-align: center;
+}
+.create-view-header > img {
+    width: 90px;
+}
+.create-view-header > h1 {
+    color: white;
+    font-family: sans-serif;
+    font-size: .8em;
+    margin: 0;
+    padding-bottom: .5em;
+    text-transform: uppercase;
+}
 
 /*SIGN IN VIEW ERROR*/
 #error-block {

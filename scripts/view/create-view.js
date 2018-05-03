@@ -25,6 +25,20 @@ var app = app || {};
         
         $('#user-input-menu').css('left', '-33%');
     }
+    function renderSiteHeader() {
+        if (!$('#web-row-container > header').length) {
+            positionCounter++;
+            let header = new app.Section(positionCounter, app.templates.templateToHtml('header', ''));
+            project.allSections.push(header);
+
+            // let templateNum = 'header';
+            // console.log(positionCounter);
+            // let body = project.allSections[positionCounter].body
+            // body = app.templates.templateToHtml(templateNum, '');
+            // console.log(project.allSections[positionCounter].body);
+            project.updateProject();
+        }
+    }
 
     function createSection() {
         positionCounter++;
@@ -35,12 +49,6 @@ var app = app || {};
 
         $('#user-input-menu').css('left', '0');
     }
-
-    function initWebBuilderViewToHtml() {
-        var source = document.getElementById("web-builder-article-template").innerHTML;
-        var template = Handlebars.compile(source);
-        return template;
-    };
 
     createView.initCreateView = function(ctx) {
         console.log('project_id', ctx.params.project_id);
@@ -57,6 +65,14 @@ var app = app || {};
         $('body').css('background', '#ffffff');
         $('#hamburger-menu-icon').css('color', '#003459');
         createView.enableMenu();
+
+        // render a site header
+        renderSiteHeader();
+
+        let siteHeader = app.templates.templateToHtml('header', '');
+        $('#web-row-container').append(siteHeader);
+
+
     } 
 
     createView.enableMenu = function() {

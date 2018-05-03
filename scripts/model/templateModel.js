@@ -15,8 +15,6 @@ var app = app || {};
   templates.template5 = Handlebars.compile($('#template-five').text());
 
   templates.templateToHtml = function(templateNum, body) {
-    console.log('made it to templates.templateToHtml', 'templateNum: ' + templateNum, body);
-    console.log(this[templateNum]());
     return this[templateNum]();
   };
 
