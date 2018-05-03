@@ -79,6 +79,12 @@ var app = app || {};
     });
   };
 
+  createView.testHtml = project_id => {
+    $.get(`${ENV.apiUrl}/app/zip/:${project_id}`)
+      .then(results => console.log(results))
+      .catch(console.error)
+  }
+  
   module.createView = createView;
 
 })(app);

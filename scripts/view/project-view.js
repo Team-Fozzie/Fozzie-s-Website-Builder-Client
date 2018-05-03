@@ -27,37 +27,64 @@ var app = app || {};
         $('#project-view ul').append(template(ctx.params));
       })
       .then(()=> {
+
+        $('.download-project').on('click', function() {
+          let projectid = $(this).parent().data('projectid');
+          console.log(projectid);
+          new JSZip.external.Promise(function (resolve, reject) {
+            JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectid}`, function (err, data) {
+              if (err) {
+                reject(err);
+              } else {
+                resolve(data);
+              }
+            });
+          }).then(function (data) {
+            console.log('"data" from server: ', data);
+            return JSZip.loadAsync(data, {createFolders: true});
+          })
+            .then(results => console.log(results))
+            .catch(console.error);
+        });
+
         $('.edit-project').on('click', function(event) {
+          let projectid = $(this).parent().data('projectid');
           let projectName = $(this).parent().find('a').text();
-          let projectId = $(this).parent().data('projectid');
-          console.log(projectId);
+          console.log(projectid);
           $(this).parent().append($('<input>').val(projectName));
 
           $('input').on('change', function(event){
             let newProjectName = $(this).val();
-            console.log(newProjectName);
 
             $.ajax({
-              url:`${ENV.apiUrl}/app/project/${projectId}`,
+              url:`${ENV.apiUrl}/app/project/${projectid}`,
               method:'PUT',
               data: {
-                project_name:newProjectName
+                project_name: newProjectName
               }
             })
-              .then(
-                // projectView.initProjectView()
-                page(`/projects/${app.user.user_id}`)
-                //write code to change
-              );
-          });
-
-          // let newName = $.put('path', input.val().
+            .then(page(`/projects/${app.user.user_id}`))
+            .catch(console.error());
         });
-
-
-      })
-      .catch(console.error());
+      });  
+    });
   };
+
+  // downloadProject = function() {
+  //   new JSZip.external.Promise(function (resolve, reject) {
+  //     JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectId}`, function (err, data) {
+  //       if (err) {
+  //         reject(err);
+  //       } else {
+  //         resolve(data);
+  //       }
+  //     });
+  //   }).then(function (data) {
+  //     return JSZip.loadAsync(data);
+  //   })
+  //     .then(results=> console.log(results))
+  //     .catch(console.error);
+  // }
 
 
   // };
