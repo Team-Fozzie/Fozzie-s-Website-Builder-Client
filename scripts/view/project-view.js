@@ -7,19 +7,27 @@ make individual LI from them
 */
 var app = app || {};
 (function (module) {
+
     var projectView = {};
+
     projectView.initProjectView = function (ctx) {
+
         $('section').hide(); 
         $('#project-view').show();
-
+        
         $.get(`${ENV.apiUrl}/user/projects/${ctx.params.user_id}`)
             .then(results => {
-                if(results){
-                    // render to the page
-                    // grab handlebar template
+                if(results.length){
+                    let template = Handlebars.compile($('#project-li-template').text());
+                    $('#project-view ul').append(template(ctx.params));
                 }
+                let template = Handlebars.compile($('#add-new-project-li').text());
+                $('#project-view ul').append(template(ctx.params));
             })
-            .catch(console.error(error));
+            .catch(console.error());
+
+            
+
 
             
     //     page('/projects');
