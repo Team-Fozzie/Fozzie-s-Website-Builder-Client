@@ -15,9 +15,9 @@ var app = app || {};
   templates.template5 = Handlebars.compile($('#template-five').text());
 
   templates.templateToHtml = function(templateNum, body) {
-    return this[templateNum]();
+    return this[templateNum](body);
   };
 
   module.templates = templates;
 
-})(app)
+})(app);
