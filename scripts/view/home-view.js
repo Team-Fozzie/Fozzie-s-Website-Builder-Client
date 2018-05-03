@@ -24,9 +24,13 @@ var app = app || {};
                     password: password
                 }
             })
-            .then(results => console.log(results));
+            .then(results => {
+                // MIGHT NOT NEED CONSTRUCTOR
 
-            page('/projects');
+                page(`/projects/${results.user_id}`);
+            })
+            .catch(console.error('username or email already is registerd'));
+
         });
     }
     module.homeView = homeView;

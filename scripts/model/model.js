@@ -11,10 +11,11 @@ var app = app || {};
     this.order = order;
     this.body = body;
   }
-  function User(username, email, password) {
+  function User(username, email, password, user_id) {
     this.username = username;
     this.email = email;
     this.password = password;
+    this.user_id = user_id;
   }
 
   
