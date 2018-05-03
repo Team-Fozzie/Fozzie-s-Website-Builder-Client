@@ -11,8 +11,8 @@ var app = app || {};
   var projectView = {};
 
   projectView.initProjectView = function (ctx) {
-
     $('section').hide();
+    $('#project-view ul').empty();
     $('#project-view').show();
 
     $.get(`${ENV.apiUrl}/user/projects/${ctx.params.user_id}`)
@@ -26,8 +26,41 @@ var app = app || {};
         let template = Handlebars.compile($('#add-new-project-li').text());
         $('#project-view ul').append(template(ctx.params));
       })
+      .then(()=> {
+        $('.edit-project').on('click', function(event) {
+          let projectName = $(this).parent().find('a').text();
+          let projectId = $(this).parent().data('projectid');
+          console.log(projectId);
+          $(this).parent().append($('<input>').val(projectName));
+
+          $('input').on('change', function(event){
+            let newProjectName = $(this).val();
+            console.log(newProjectName);
+
+            $.ajax({
+              url:`${ENV.apiUrl}/app/project/${projectId}`,
+              method:'PUT',
+              data: {
+                project_name:newProjectName
+              }
+            })
+              .then(
+                // projectView.initProjectView()
+                page(`/projects/${app.user.user_id}`)
+                //write code to change
+              );
+          });
+
+          // let newName = $.put('path', input.val().
+        });
+
+
+      })
       .catch(console.error());
   };
+
+
+  // };
   module.projectView = projectView;
 })(app);
 
