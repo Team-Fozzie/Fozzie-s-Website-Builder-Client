@@ -26,56 +26,49 @@ var app = app || {};
 
     $('#user-input-menu').css('left', '-33%');
   }
-  function renderSiteHeader() {
-    if (!$('#web-row-container > header').length) {
-      positionCounter++;
-      let header = new app.Section(positionCounter, app.templates.templateToHtml('header', ''));
-      project.allSections.push(header);
+  
+function renderSiteHeader() {
+        if (!$('#web-row-container > header').length) {
+            positionCounter++;
+            let header = new app.Section(positionCounter, app.templates.templateToHtml('header'));
+            project.allSections.push(header);
+            project.updateProject();
+        }
+    };
 
-      // let templateNum = 'header';
-      // console.log(positionCounter);
-      // let body = project.allSections[positionCounter].body
-      // body = app.templates.templateToHtml(templateNum, '');
-      // console.log(project.allSections[positionCounter].body);
-      project.updateProject();
-    }
-  }
+    function createSection() {
+        positionCounter++;
+        // currentSection++;
+        let section = new app.Section(positionCounter, defaultBody);
 
-  function createSection() {
-    positionCounter++;
-    currentSection++;
-    let section = new app.Section(positionCounter, defaultBody);
+        project.allSections.push(section);
+        project.renderAll($('#web-row-container'));
 
-    project.allSections.push(section);
-    project.renderAll($('#web-row-container'), currentSection);
+        $('#user-input-menu').css('left', '0');
+    };
 
-    $('#user-input-menu').css('left', '0');
-  }
+    createView.initCreateView = function(ctx) {
+        console.log('project_id', ctx.params.project_id);
+        if (ctx.params.project_id) {
+            project = new Project(ctx.params.project_id, '');
+            project.getProject();
+            project.renderAll($('#web-row-container')); 
+        } else {
+            // TODO: make new project in database.
+        }
+        $('section').hide();
+        $('section#web-builder-view').show();
+        $('section#web-builder-view').children().show();
+        $('body').css('background', '#ffffff');
+        $('#hamburger-menu-icon').css('color', '#003459');
+        createView.enableMenu();
 
-  createView.initCreateView = function(ctx) {
-    console.log('project_id', ctx.params.project_id);
-    if (ctx.params.project_id) {
-      project = new Project(ctx.params.project_id, '');
-      project.getProject();
-      project.renderAll($('#web-row-container'));
-    } else {
-      // TODO: make new project in database.
-    }
-    $('section').hide();
-    $('section#web-builder-view').show();
-    $('section#web-builder-view').children().show();
-    $('body').css('background', '#ffffff');
-    $('#hamburger-menu-icon').css('color', '#003459');
-    createView.enableMenu();
+        // render a site header
+        renderSiteHeader();
 
-    // render a site header
-    renderSiteHeader();
-
-    let siteHeader = app.templates.templateToHtml('header', '');
-    $('#web-row-container').append(siteHeader);
-
-
-  };
+        let siteHeader = app.templates.templateToHtml('header', '');
+        $('#web-row-container').append(siteHeader);
+    }; 
 
   createView.enableMenu = function() {
     $('#hamburger-menu-icon').on('click', function () {
