@@ -29,25 +29,19 @@ var app = app || {};
     function renderSiteHeader() {
         if (!$('#web-row-container > header').length) {
             positionCounter++;
-            let header = new app.Section(positionCounter, app.templates.templateToHtml('header', ''));
+            let header = new app.Section(positionCounter, app.templates.templateToHtml('header'));
             project.allSections.push(header);
-
-            // let templateNum = 'header';
-            // console.log(positionCounter);
-            // let body = project.allSections[positionCounter].body
-            // body = app.templates.templateToHtml(templateNum, '');
-            // console.log(project.allSections[positionCounter].body);
             project.updateProject();
         }
     }
 
     function createSection() {
         positionCounter++;
-        currentSection++;
+        // currentSection++;
         let section = new app.Section(positionCounter, defaultBody);
 
         project.allSections.push(section);
-        project.renderAll($('#web-row-container'), currentSection);
+        project.renderAll($('#web-row-container'));
 
         $('#user-input-menu').css('left', '0');
     }
