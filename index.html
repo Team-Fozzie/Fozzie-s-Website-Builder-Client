@@ -14,6 +14,11 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.10/css/all.css" integrity="sha384-+d0P83n9kaQMCwj8F4RJB66tzIwOKmrdb46+porD/OvrJ+37WqIM7UoBtwHO6Nlg" crossorigin="anonymous">
     <script id="section-template" type="text/x-handlebars-template">
         {{{body}}}    
+    </script>
+    <script id="add-new-project-li" type="text/x-handlebars-template">
+        <li>
+            <a href="/create/new/{{user_id}}">Add New Project</a>
+        </li>
     </script> 
     <script id="project-li-template" type="text/x-handlebars-template">
         <li><a href="/create/{{project_id}}">{{project_name}}</a></li>
@@ -135,6 +140,16 @@
             <li class="" href=>Log In</li>
         </ul>
     </nav>
+    <section id="home-view-login">
+        <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
+        <form id="home-view-login">
+            <input id="username" type="text" placeholder="username" required>
+            <input id="password" type="password" placeholder="password">
+            <button type="submit">Login</button>
+        </form>
+        <a href="/sign-up">Sign Up</a>
+        </section>
+    </section>
     <section id="home-view">
         <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
         <form id="home-view-signup">
@@ -146,7 +161,7 @@
         </form>
     </section>
     <section id="project-view">
-        <li><a href="/create">Add New Project</a></li>
+        <ul></ul>
     </section>
     <section id="web-builder-view">
         <nav id="user-input-menu">

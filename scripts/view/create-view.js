@@ -42,7 +42,15 @@ var app = app || {};
         return template;
     };
 
-    createView.initCreateView = function() {
+    createView.initCreateView = function(ctx) {
+        console.log('project_id', ctx.params.project_id);
+        if (ctx.params.project_id) {
+            project = new Project(ctx.params.project_id, '');
+            project.getProject();
+            project.renderAll($('#web-row-container')); 
+        } else {
+            // TODO: make new project in database.
+        }
         $('section').hide();
         $('section#web-builder-view').show();
         $('section#web-builder-view').children().show();
