@@ -40,6 +40,10 @@
     color: red;
 }
 
+.currently-selected {
+    border: blue 1px solid;
+}
+
 .text-overlay {
   position: absolute;
   top: 50%;
@@ -68,15 +72,15 @@ section.template i:active {
   box-shadow: 1px 1px 1px 3px #888;
 }
 #user-input-menu {
-    color: white;
   position: fixed;
   height: 100vh;
   width: 33%;
   top: 0;
   left: -33%;
-  background: #003459;
+  background: #06aaf6;
   z-index: 5;
   transition: all .2s ease;
+  opacity: .8;
 }
 
 /*HOME VIEW CSS STYLING*/
