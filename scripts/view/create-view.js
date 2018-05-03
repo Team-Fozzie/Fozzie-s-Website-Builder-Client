@@ -1,39 +1,40 @@
 'use strict';
 
-const defaultBody = `<section class="cols-1 template-body"><article><img src="./assets/img/fozzie-web-builder-logo.png" alt="img alt"></article></section>`;
+const defaultBody = '<section class="cols-1 template-body"><article><img src="./assets/img/fozzie-web-builder-logo.png" alt="img alt"></article></section>';
 
 var app = app || {};
 
 (function (module) {
-    var createView = {};
+  var createView = {};
 
-    var positionCounter = project.allSections.length - 1;
-    var currentSection = positionCounter;
+  var positionCounter = project.allSections.length - 1;
+  var currentSection = positionCounter;
 
-    $('#add-new-section').on('click', createSection);
+  $('#add-new-section').on('click', createSection);
 
-    $('#user-input-menu li').on('click', assignTemplate);
+  $('#user-input-menu li').on('click', assignTemplate);
 
-    function assignTemplate() {
-        let templateNum = $(this).data('cols');
-        let body = project.allSections[positionCounter].body
-        body = app.templates.templateToHtml(templateNum, body);
+  function assignTemplate() {
+    let templateNum = $(this).data('cols');
+    let body = project.allSections[positionCounter].body;
+    body = app.templates.templateToHtml(templateNum, body);
 
-        project.allSections[positionCounter].body = body;
-        project.renderAll($('#web-row-container'));
+    project.allSections[positionCounter].body = body;
+    project.renderAll($('#web-row-container'));
 
-        project.updateProject();
-        
-        $('#user-input-menu').css('left', '-33%');
-    }
-    function renderSiteHeader() {
+    project.updateProject();
+
+    $('#user-input-menu').css('left', '-33%');
+  }
+  
+function renderSiteHeader() {
         if (!$('#web-row-container > header').length) {
             positionCounter++;
             let header = new app.Section(positionCounter, app.templates.templateToHtml('header'));
             project.allSections.push(header);
             project.updateProject();
         }
-    }
+    };
 
     function createSection() {
         positionCounter++;
@@ -44,7 +45,7 @@ var app = app || {};
         project.renderAll($('#web-row-container'));
 
         $('#user-input-menu').css('left', '0');
-    }
+    };
 
     createView.initCreateView = function(ctx) {
         console.log('project_id', ctx.params.project_id);
@@ -67,19 +68,17 @@ var app = app || {};
 
         let siteHeader = app.templates.templateToHtml('header', '');
         $('#web-row-container').append(siteHeader);
+    }; 
 
+  createView.enableMenu = function() {
+    $('#hamburger-menu-icon').on('click', function () {
+      $('#user-input-menu').css('left', '0');
+    });
+    $('#menu-exit').on('click', function() {
+      $('#user-input-menu').css('left', '-33%');
+    });
+  };
 
-    } 
-
-    createView.enableMenu = function() {
-        $('#hamburger-menu-icon').on('click', function () {
-            $('#user-input-menu').css('left', '0');
-        });
-        $('#menu-exit').on('click', function() {
-            $('#user-input-menu').css('left', '-33%');
-        });
-    };
-
-    module.createView = createView;
+  module.createView = createView;
 
 })(app);
