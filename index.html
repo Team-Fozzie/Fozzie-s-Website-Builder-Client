@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <base href="/.">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Web Builder</title>
@@ -143,15 +144,16 @@
     <section id="home-view-login">
         <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
         <form id="home-view-login">
-            <input id="username" type="text" placeholder="username" required>
-            <input id="password" type="password" placeholder="password">
+            <input id="login-username" type="text" placeholder="username" required>
+            <input id="login-password" type="password" placeholder="password">
             <button type="submit">Login</button>
         </form>
-        <a href="/sign-up">Sign Up</a>
+        <a href="/sign-up">Don't have an account? Sign up now!</a>
         </section>
     </section>
     <section id="home-view">
         <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
+        <div id="error-block">This Username or Email is already registered.</div>
         <form id="home-view-signup">
             <input id="username" type="text" placeholder="username" required>
             <input id="email" type="text" placeholder="email" required>
@@ -195,6 +197,7 @@
     <script src="scripts/view/view.js"></script>
     <script src="scripts/view/create-view.js"></script>
     <script src="scripts/view/home-view.js"></script>
+    <script src="scripts/view/login-view.js"></script>
     <script src="scripts/view/project-view.js"></script>
     <script src="scripts/controller/routes.js"></script>
 

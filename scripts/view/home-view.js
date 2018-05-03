@@ -8,6 +8,7 @@ var app = app || {};
     homeView.initHomeView = function () {
         $('section').hide();
         $('#home-view').show();
+        $('#error-block').animate({ opacity: 0 });
 
         $('#home-view-signup').on('submit', function(event) {
             event.preventDefault();
@@ -25,12 +26,17 @@ var app = app || {};
                 }
             })
             .then(results => {
-                // MIGHT NOT NEED CONSTRUCTOR
-
+                app.user = new app.User(results.username, results.email, results.user_id);     
                 page(`/projects/${results.user_id}`);
             })
-            .catch(console.error('username or email already is registerd'));
+            .catch(homeView.displayError());
 
+        });
+    }
+    homeView.displayError = function() {
+        $('#error-block').animate({ opacity: 1 })
+        $('#home-view-signup').on('change', function (event) {
+            $('#error-block').animate({ opacity: 0 })
         });
     }
     module.homeView = homeView;
