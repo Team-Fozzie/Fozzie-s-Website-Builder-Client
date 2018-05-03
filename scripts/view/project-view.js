@@ -7,13 +7,14 @@ make individual LI from them
 */
 var app = app || {};
 (function (module) {
+
     var projectView = {};
+
     projectView.initProjectView = function (ctx) {
+
         $('section').hide(); 
         $('#project-view').show();
         
-        
-
         $.get(`${ENV.apiUrl}/user/projects/${ctx.params.user_id}`)
             .then(results => {
                 if(results.length){
@@ -23,7 +24,7 @@ var app = app || {};
                 let template = Handlebars.compile($('#add-new-project-li').text());
                 $('#project-view ul').append(template(ctx.params));
             })
-            .catch(console.error(error));
+            .catch(console.error());
 
             
 

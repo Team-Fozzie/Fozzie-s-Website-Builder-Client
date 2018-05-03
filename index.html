@@ -2,6 +2,7 @@
 <html>
 
 <head>
+    <base href="/.">
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Web Builder</title>
@@ -22,6 +23,12 @@
     </script> 
     <script id="project-li-template" type="text/x-handlebars-template">
         <li><a href="/create/{{project_id}}">{{project_name}}</a></li>
+    </script>
+    <script id="header-template" type="text/x-handlebars-template">
+        <header class="create-view-header">
+            <img src="./assets/img/fozzie-web-builder-logo.png" alt="site logo"/>
+            <h1>Your Site Title</h1>
+        </header>
     </script>
     <script id="template-one" type="text/x-handlebars-template">
         <section id="order-{{order}}" class="cols-1">
@@ -134,24 +141,20 @@
 </head>
 <!-- THIS IS THE END OF THE HEAD AND BEGINNING OF THE BODY-->
 <body>
-    <nav>
-        <ul>
-            <li class="" href=>Sign In</li>
-            <li class="" href=>Log In</li>
-        </ul>
-    </nav>
+    <div id="hamburger-menu-icon"><i class="fas fa-bars"></i></div>
     <section id="home-view-login">
         <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
         <form id="home-view-login">
-            <input id="username" type="text" placeholder="username" required>
-            <input id="password" type="password" placeholder="password">
+            <input id="login-username" type="text" placeholder="username" required>
+            <input id="login-password" type="password" placeholder="password">
             <button type="submit">Login</button>
         </form>
-        <a href="/sign-up">Sign Up</a>
+        <a href="/sign-up">Don't have an account? Sign up now!</a>
         </section>
     </section>
     <section id="home-view">
         <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
+        <div id="error-block">This Username or Email is already registered.</div>
         <form id="home-view-signup">
             <input id="username" type="text" placeholder="username" required>
             <input id="email" type="text" placeholder="email" required>
@@ -159,12 +162,14 @@
             
             <button type="submit">Sign Up</button>
         </form>
+        <a href="/">Back to login</a>
     </section>
     <section id="project-view">
         <ul></ul>
     </section>
     <section id="web-builder-view">
         <nav id="user-input-menu">
+            <div id="menu-exit"><i class="fas fa-times-circle"></i></div>
             <ul>
                 <li data-cols="template1">Template 1</li>
                 <li data-cols="template2">Template 2</li>
@@ -173,8 +178,13 @@
                 <li data-cols="template5">Template 5</li>
             </ul>
 
-            <h3>Current Sections</h3>
+            <h3>Current Sections (<span id="section-count">0</span>)</h3>
             <ul id="current-sections"></ul>
+            <ul id="general-menu-items">
+                <li><a href="#">About Us</a></li>
+                <li><a href="#">Sign In</a></li>
+                <li><a href="#">Log In</a></li>
+            </ul>
         </nav>
         <section id="web-row-container"></section>
         <section id="add-new-section" class="template">
@@ -195,6 +205,7 @@
     <script src="scripts/view/view.js"></script>
     <script src="scripts/view/create-view.js"></script>
     <script src="scripts/view/home-view.js"></script>
+    <script src="scripts/view/login-view.js"></script>
     <script src="scripts/view/project-view.js"></script>
     <script src="scripts/controller/routes.js"></script>
 

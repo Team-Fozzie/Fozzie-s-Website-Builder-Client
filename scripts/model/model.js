@@ -11,10 +11,9 @@ var app = app || {};
     this.order = order;
     this.body = body;
   }
-  function User(username, email, password, user_id) {
+  function User(username, email, user_id) {
     this.username = username;
     this.email = email;
-    this.password = password;
     this.user_id = user_id;
   }
 
@@ -72,6 +71,7 @@ Project.prototype.getProject= function() {
 // }
   module.Section = Section;
   module.Project = Project;
+  module.User = User;
 
 
   Project.prototype.sortAll = function() {
