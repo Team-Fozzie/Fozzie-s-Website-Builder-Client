@@ -20,11 +20,18 @@ var app = app || {};
 
   
   //startElement must be a jQuery element
-  Project.prototype.renderAll = function(startElement) {
+  Project.prototype.renderAll = function(startElement, currentlySelected) {
     $(startElement).empty();
     this.sortAll();
-    this.allSections.forEach(e => {
-      $(startElement).append(e.render());
+    this.allSections.forEach((e, i) => {
+      if (i === currentlySelected){
+        let template = Handlebars.compile($('#current-selection-template'));
+        $(startElement).append(template(this));
+        $('section.currently-selected').append(e.render());
+      }
+      else {
+        $(startElement).append(e.render());
+      }
     })
   }
 

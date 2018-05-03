@@ -8,6 +8,7 @@ var app = app || {};
     var createView = {};
 
     var positionCounter = project.allSections.length - 1;
+    var currentSection = positionCounter;
 
     $('#add-new-section').on('click', createSection);
 
@@ -28,10 +29,11 @@ var app = app || {};
 
     function createSection() {
         positionCounter++;
+        currentSection++;
         let section = new app.Section(positionCounter, defaultBody);
 
         project.allSections.push(section);
-        project.renderAll($('#web-row-container'));
+        project.renderAll($('#web-row-container'), currentSection);
 
         $('#user-input-menu').css('left', '0');
     }
