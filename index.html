@@ -25,7 +25,12 @@
         </li>
     </script> 
     <script id="project-li-template" type="text/x-handlebars-template">
-        <li><a href="/create/{{project_id}}">{{project_name}}</a><span class="edit-project"><i class="fas fa-edit"></i></span><span class="delete-project"><i class="fas fa-trash-alt"></i></span><span class="download-project"><i class="fas fa-download"></i></span></li>
+        <li data-projectid="{{project_id}}">
+            <a href="/create/{{project_id}}">{{project_name}}</a>
+            <span class="edit-project"><i class="fas fa-edit"></i></span>
+            <span class="delete-project"><i class="fas fa-trash-alt"></i></span>
+            <span class="download-project"><i class="fas fa-download"></i></span>
+        </li>
     </script>
     <script id="header-template" type="text/x-handlebars-template">
         <header class="create-view-header">
