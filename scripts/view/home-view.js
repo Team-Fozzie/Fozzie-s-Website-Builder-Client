@@ -5,11 +5,16 @@ var app = app || {};
 (function (module) {
     var homeView = {};
 
+    homeView.activateMenu = function() {
+        $('#hamburger-menu-icon').on('click', function() {
+            //TODO ACTIVATE MENU
+        });
+    };
+
     homeView.initHomeView = function () {
         $('section').hide();
         $('#home-view').show();
-        $('#error-block').animate({ opacity: 0 });
-
+        
         $('#home-view-signup').on('submit', function(event) {
             event.preventDefault();
             let username = $('#username').val();

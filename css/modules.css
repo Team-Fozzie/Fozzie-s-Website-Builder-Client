@@ -1,4 +1,11 @@
 /* The following is specifically for the elements on our web builder*/
+#hamburger-menu-icon {
+    color: white;
+    left: -.5em;
+    font-size: 2.2em;
+    position: absolute;
+    top: .5em;
+}
 .text-container {
     margin: 0 auto;
     margin-bottom: 1em;
@@ -128,7 +135,7 @@ section.template i:active {
 } 
 
 /*LOGIN VIEW CSS STYLING*/
-#home-view-login > a {
+#home-view-login > a, #home-view > a {
     color: white;
     display: block;
     font-family: sans-serif;
@@ -160,6 +167,7 @@ section.template i:active {
     font-family: sans-serif;
     font-size: .5em;
     margin: 0 auto;
+    opacity: 0;
     padding: 1em;
     text-align: center;
     text-transform: uppercase;

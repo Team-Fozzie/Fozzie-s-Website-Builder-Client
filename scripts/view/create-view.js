@@ -55,7 +55,18 @@ var app = app || {};
         $('section#web-builder-view').show();
         $('section#web-builder-view').children().show();
         $('body').css('background', '#ffffff');
+        $('#hamburger-menu-icon').css('color', '#003459');
+        createView.enableMenu();
     } 
+
+    createView.enableMenu = function() {
+        $('#hamburger-menu-icon').on('click', function () {
+            $('#user-input-menu').css('left', '0');
+        });
+        $('#menu-exit').on('click', function() {
+            $('#user-input-menu').css('left', '-33%');
+        });
+    };
 
     module.createView = createView;
 

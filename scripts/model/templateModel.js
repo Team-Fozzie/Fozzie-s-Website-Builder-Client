@@ -6,6 +6,8 @@ var app = app || {};
 
   var templates = {};
 
+  templates.header = Handlebars.compile($('#header-template').text());
+
   templates.template1 = Handlebars.compile($('#template-one').text());
   templates.template2 = Handlebars.compile($('#template-two').text());
   templates.template3 = Handlebars.compile($('#template-three').text());
