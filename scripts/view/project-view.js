@@ -27,46 +27,85 @@ var app = app || {};
         $('#project-view ul').append(template(ctx.params));
       })
       .then(()=> {
+        $('.download-project').on('click', projectView.downloadProject);
+        $('.edit-project').on('click', projectView.editProjectName); 
+        $('.delete-project').on('click', projectView.deleteProject);
+        $('li.add-new-project').on('click', projectView.addNewProject);
+      });
+  };
 
-        $('.download-project').on('click', function() {
-          let projectid = $(this).parent().data('projectid');
-          console.log(projectid);
-          new JSZip.external.Promise(function (resolve, reject) {
-            JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectid}`, function (err, data) {
-              if (err) {
-                reject(err);
-              } else {
-                resolve(data);
-              }
-            });
-          }).then(function (data) {
-            console.log('"data" from server: ', data);
-            return JSZip.loadAsync(data, {createFolders: true});
-          })
-            .then(results => console.log(results))
-            .catch(console.error);
-        });
+  projectView.downloadProject = function() {
+    let projectid = $(this).parent().data('projectid');
+    console.log(projectid);
+    new JSZip.external.Promise(function (resolve, reject) {
+      JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectid}`, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      });
+    }).then(function (data) {
+      console.log('"data" from server: ', data);
+      return JSZip.loadAsync(data, { createFolders: true });
+    })
+      .then(results => console.log(results))
+      .catch(console.error);
+  };
 
-        $('.edit-project').on('click', function(event) {
-          let projectid = $(this).parent().data('projectid');
-          let projectName = $(this).parent().find('a').text();
-          console.log(projectid);
-          $(this).parent().append($('<input>').val(projectName));
+  projectView.editProjectName = function() {
+    let projectid = $(this).parent().data('projectid');
+    let projectName = $(this).parent().find('a').text();
+    console.log(projectid);
+    $(this).parent().append($('<input>').val(projectName));
 
-          $('input').on('change', function(event){
-            let newProjectName = $(this).val();
+    $('input').on('change', function (event) {
+      let newProjectName = $(this).val();
 
-            $.ajax({
-              url:`${ENV.apiUrl}/app/project/${projectid}`,
-              method:'PUT',
-              data: {
-                project_name: newProjectName
-              }
-            })
-            .then(page(`/projects/${app.user.user_id}`))
-            .catch(console.error());
-        });
-      });  
+      $.ajax({
+        url: `${ENV.apiUrl}/app/project/${projectid}`,
+        method: 'PUT',
+        data: {
+          project_name: newProjectName
+        }
+      })
+        .then(function () {
+          page(`/projects/${app.user.user_id}`)
+        })
+        .catch(console.error);
+    });
+  };
+
+  projectView.deleteProject = function() {
+    let projectid = $(this).parent().data('projectid');
+
+    $.ajax({
+      url: `${ENV.apiUrl}/app/user/projects/delete/${projectid}`,
+      method: 'DELETE'
+    })
+      .then(function() {
+        page(`/projects/${app.user.user_id}`)
+      })
+      .catch(console.error);
+  };
+
+  projectView.addNewProject = function() {
+    $(this).parent().append($('<input>').val('Project Name Hear')); 
+
+    $('input').on('change', function (event) {
+      let projectName = $(this).val();
+
+      $.ajax({
+        url: `${ENV.apiUrl}/app/project/new/${projectName}`,
+        method: 'POST',
+        data: {
+          user_id: app.user.user_id
+        }
+      })
+      .then(function() {
+        page(`/projects/${app.user.user_id}`)
+      })
+      .catch(console.error);
     });
   };
 
