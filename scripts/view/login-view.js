@@ -8,6 +8,7 @@ var app = app || {};
     $('section').hide();
     $('#home-view-login').show();
     $('#section-list').hide();
+    $('body').css('background', '#06aaf6');
 
     $('#home-view-login').on('submit', function(event) {
       event.preventDefault();

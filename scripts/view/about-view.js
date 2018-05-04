@@ -8,6 +8,7 @@ var app = app || {};
   aboutUsView.initAboutUs = function() {
     $('section').hide();
     $('#about-us-view').show();
+    $('body').css('background', '#06aaf6');
   }
 
   module.aboutUsView = aboutUsView;

@@ -15,6 +15,7 @@ var app = app || {};
     $('#project-view ul').empty();
     $('#project-view').show();
     $('#section-list').hide();
+    $('body').css('background', '#06aaf6');
 
     $.get(`${ENV.apiUrl}/user/projects/${ctx.params.user_id}`)
       .then(result => {

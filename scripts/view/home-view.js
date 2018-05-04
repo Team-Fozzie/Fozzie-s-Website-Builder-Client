@@ -15,6 +15,7 @@ var app = app || {};
         $('section').hide();
         $('#home-view').show();
         $('#section-list').hide();
+        $('body').css('background', '#06aaf6');
         
         $('#home-view-signup').on('submit', function(event) {
             event.preventDefault();
