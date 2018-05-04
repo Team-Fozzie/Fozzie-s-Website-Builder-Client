@@ -7,7 +7,6 @@ var app = app || {};
 
     homeView.activateMenu = function() {
         $('#hamburger-menu-icon').on('click', function() {
-            //TODO ACTIVATE MENU
         });
     };
 

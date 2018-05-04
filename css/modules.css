@@ -17,7 +17,7 @@
     width: 100%;
     z-index: 5;
 }
-.top-nav > img {
+.top-nav > a > img {
     width: 50px;
     display:block;
     margin: .2em auto;
@@ -114,6 +114,9 @@ section.template i:active {
 }
 #general-menu-items li {
     list-style-type: none;
+}
+#general-menu-items li:hover {
+    background: #F17105;
 }
 #general-menu-items a {
     color: white;
@@ -234,7 +237,17 @@ section.template i:active {
     width: 42%;
 }
 #template-list {
+    clear: right;
     display: none;
+    color: white;
+    list-style-type: none;
+    cursor: pointer;
+}
+#template-list li {
+    padding: .2em;    
+}
+#template-list li:hover {
+    background: #F17105;
 }
 #section-list {
     display:none;
@@ -274,5 +287,10 @@ section.template i:active {
     #project-view > ul > li > a {
         display: block;
         padding-bottom: 1em;
+    }
+}
+@media screen and (max-width: 700px) {
+    #about-us-view .cols-2 > article {
+        width: 100%;
     }
 }

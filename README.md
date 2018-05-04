@@ -100,4 +100,4 @@ Amanda Moen
 
 ## Links to any 3rd party apis' your client side will use
 -find any google api DRIVE and SIGN IN
--https://stuk.github.io/jszip/
+-https://github.com/joehand/archiver-api

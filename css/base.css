@@ -3,10 +3,10 @@
   
 }
 body {
-  background: #06aaf6;
+  background: #fff;
   margin: 0 auto;
   max-width: 700px;
-  padding: 7em;
+  padding-top: 7em;
   position: relative;
   width: 90%;
 }
