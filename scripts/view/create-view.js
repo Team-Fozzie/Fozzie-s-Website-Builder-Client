@@ -29,7 +29,6 @@ var app = app || {};
     let siteHeader = app.templates.templateToHtml('header', '');
     $('#web-row-container').append(siteHeader);
 
-    console.log('reset the sections');
     createView.positionCounter++;
     let header = new app.Section(createView.positionCounter, app.templates.templateToHtml('header'));
     app.project.allSections.push(header);
