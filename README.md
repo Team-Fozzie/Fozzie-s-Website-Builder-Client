@@ -37,6 +37,20 @@ Page.js
 
 ## Change Log
 
+05-01-2018 6:00pm- Application now has a backend that gets one project, updates an existing project, and a front end with a user interface that has event listeners on an add button and can add templates from a side bar onto the page.
+05-02-2018 5:30pm - Application now has a backend that can get all projects, delete one project, and delete all projects. The front end now has a login view, a create view, and a project view.
+05-03-2018 6:00pm- Application now has a server that can create a new file with the HTML that the user will eventually get back. The front end now has the delete wired up. You can now also change a project's name.
+05-03-2018 3:50pm - update project name fucntionality.
+05-03-2018 12:50pm - delete project fucntionality.
+
+05-02-2018 3:50pm - Application now has a readme.
+05-02-2018 3:50pm - troubleshooting home-view.js / create-view.js.
+
+05-01-2018 3:50pm - begin connecting client and server-side.
+05-01-2018 3:50pm - page.js connections.
+05-01-2018 3:50pm - fixing templates.
+
+04-30-2018 3:50pm - Application now has a readme.
 04-30-2018 4:15pm - README.md / UI interface research and planning
 04-30-2018 3:15pm - added SQL database tables users and projects
 04-30-2018 2:15pm - discussing more specifically page layout and functionality
@@ -80,9 +94,10 @@ Amanda Moen
 
 -CREATE page
 
-- user presses add box to add row
--- menu on left slides in and offers templated rows
+- user presses add box (box with plus sign in it) to add row
+-- menu on left slides in and offers templated rows to insert in that blank row
 
 
 ## Links to any 3rd party apis' your client side will use
--find any google api DRIVE adn SIGN IN
+-find any google api DRIVE and SIGN IN
+-https://stuk.github.io/jszip/
