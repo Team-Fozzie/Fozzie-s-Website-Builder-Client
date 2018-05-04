@@ -24,6 +24,7 @@ var app = app || {};
     app.project.updateProject();
 
     $('#user-input-menu').css('left', '-33%');
+    $('#template-list').hide();
   }
 
   function renderSiteHeader() {
@@ -46,7 +47,8 @@ var app = app || {};
     app.project.updateProject();
     app.project.renderAll($('#web-row-container'));
     createView.renderSectionList();
-
+    
+    $('#template-list').show();
     $('#user-input-menu').css('left', '0');
   }
 
@@ -56,7 +58,8 @@ var app = app || {};
     $('section#web-builder-view').show();
     $('section#web-builder-view').children().show();
     $('body').css('background', '#ffffff');
-    $('#hamburger-menu-icon').css('color', '#003459');
+    $('#section-list').show();
+    
     
     if (ctx.params.project_id) {
       app.project = new app.Project(ctx.params.project_id, ctx.params.project_name);
@@ -119,3 +122,5 @@ var app = app || {};
   module.createView = createView;
 
 })(app);
+
+app.createView.enableMenu();

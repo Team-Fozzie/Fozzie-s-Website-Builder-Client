@@ -14,6 +14,7 @@ var app = app || {};
     homeView.initHomeView = function () {
         $('section').hide();
         $('#home-view').show();
+        $('#section-list').hide();
         
         $('#home-view-signup').on('submit', function(event) {
             event.preventDefault();

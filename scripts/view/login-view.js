@@ -7,6 +7,7 @@ var app = app || {};
   loginView.initLoginView = function() {
     $('section').hide();
     $('#home-view-login').show();
+    $('#section-list').hide();
 
     $('#home-view-login').on('submit', function(event) {
       event.preventDefault();

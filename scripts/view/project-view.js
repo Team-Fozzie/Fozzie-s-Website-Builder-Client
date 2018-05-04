@@ -14,6 +14,7 @@ var app = app || {};
     $('section').hide();
     $('#project-view ul').empty();
     $('#project-view').show();
+    $('#section-list').hide();
 
     $.get(`${ENV.apiUrl}/user/projects/${ctx.params.user_id}`)
       .then(result => {
