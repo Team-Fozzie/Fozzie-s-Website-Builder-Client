@@ -38,21 +38,8 @@ var app = app || {};
 
   projectView.downloadProject = function() {
     let projectid = $(this).parent().data('projectid');
-    console.log(projectid);
-    new JSZip.external.Promise(function (resolve, reject) {
-      JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectid}`, function (err, data) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      });
-    }).then(function (data) {
-      console.log('"data" from server: ', data);
-      return JSZip.loadAsync(data, { createFolders: true });
-    })
-      .then(results => console.log(results))
-      .catch(console.error);
+    
+    window.location = `${ENV.apiUrl}/app/zip/${projectid}`;
   };
 
   projectView.editProjectName = function() {
@@ -92,7 +79,7 @@ var app = app || {};
   };
 
   projectView.addNewProject = function() {
-    $(this).parent().append($('<input>').val('Project Name Hear')); 
+    $(this).parent().append($('<input>').val('Project Name Here')); 
 
     $('input').on('change', function (event) {
       let projectName = $(this).val();
@@ -111,36 +98,6 @@ var app = app || {};
     });
   };
 
-  // downloadProject = function() {
-  //   new JSZip.external.Promise(function (resolve, reject) {
-  //     JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectId}`, function (err, data) {
-  //       if (err) {
-  //         reject(err);
-  //       } else {
-  //         resolve(data);
-  //       }
-  //     });
-  //   }).then(function (data) {
-  //     return JSZip.loadAsync(data);
-  //   })
-  //     .then(results=> console.log(results))
-  //     .catch(console.error);
-  // }
-
-
-  // };
   module.projectView = projectView;
+  
 })(app);
-
-//     page('/projects');
-//how to get the user data from the DB and populate the project-view interface with new li per project name
-//let template = Handlebars.compile($('#book-detail-template').text());
-// $('.book-detail').append(template(ctx.book));
-// to UPDATE the project BUT ONLY the name of it
-// $('#update-btn').on('click', function() {
-//   page(`/books/${$(this).data('id')}/update`);
-// });
-// to DELETE the project from the project view and all contents of it from DB
-// $('#delete-btn').on('click', function() {
-//   module.Project.destroy($(this).data('id'));
-// });

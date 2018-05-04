@@ -1,6 +1,5 @@
 var app = app || {};
 
-//TODO: Test the below functions
 (function(module) {
   function Project(project_id, name){
     this.name = name;
@@ -17,8 +16,6 @@ var app = app || {};
     this.user_id = user_id;
   }
 
-  
-  //startElement must be a jQuery element
   Project.prototype.renderAll = function(startElement, currentlySelected) {
     $(startElement).empty();
     this.sortAll();
@@ -39,7 +36,7 @@ var app = app || {};
     var template = Handlebars.compile($('#section-template').text());
     return template(this);
   }
-// updating the project
+
 Project.prototype.updateProject = function(callback){
   let htmlArr = [];
   this.allSections.forEach(e => htmlArr.push(e.body));
@@ -52,7 +49,6 @@ Project.prototype.updateProject = function(callback){
       .then(callback);
 }
 
-// getting the info of a specifically selected project from the project page
 Project.prototype.getProject = function(callback) {
   $.get(`${ENV.apiUrl}/app/project/${this.project_id}`)
       .then(results => {
@@ -69,17 +65,7 @@ Project.prototype.getProject = function(callback) {
       .then(callback)
       .catch(console.error);
 }
-// Project.getProjects = function(user_id){
-//   // $.get(`${ENV.apiUrl}/app/data/${user_id}`)
-//   // .then(results => {
-//   //   var proj = new Project(results[0].project_id, results[0].project_name);
-//   //   let htmlArr = JSON.parse(results[0].html);
-//   //   proj.allSections = htmlArr.map( (e,i) => new Section(i, e));
-//   //   //FIXME: WHY DOESNT THE RETURN RETURN STUFF!
-//   //   console.log(proj)
-//   //   return proj;
-//   })
-// }
+
   module.Section = Section;
   module.Project = Project;
   module.User = User;
@@ -90,10 +76,6 @@ Project.prototype.getProject = function(callback) {
   }
 
 })(app);
-
-//TODO: TEST Project --- REMEMBER TO DELETE
-
-app.project = new app.Project( 1, 'BUSMALL MEMORY GAME');
 
 
 

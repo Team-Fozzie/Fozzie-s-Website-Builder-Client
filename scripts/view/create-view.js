@@ -7,8 +7,6 @@ var app = app || {};
 (function (module) {
   var createView = {};
 
-  // var currentSection = createView.positionCounter;
-
   $('#add-new-section').on('click', createSection);
 
   $('#user-input-menu li').on('click', assignTemplate);
@@ -57,14 +55,11 @@ var app = app || {};
     $('section').hide();
     $('section#web-builder-view').show();
     $('section#web-builder-view').children().show();
-    $('body').css('background', '#ffffff');
-    // $('#section-list').show();
-    
+    $('body').css('background', '#ffffff');    
     
     if (ctx.params.project_id) {
       app.project = new app.Project(ctx.params.project_id, ctx.params.project_name);
       app.project.getProject(createView.displayProject);
-      // app.project.updateProject();
     } else{
       // TODO: make new project in database.
     }
@@ -92,9 +87,7 @@ var app = app || {};
     for (var i = 1; i < app.project.allSections.length; i++) {
       $('#current-sections').append(template(app.project.allSections[i]));
     }
-
-    // $('.delete-section').on('click', deleteSection)
-  }
+  };
 
   createView.enableMenu = function() {
     $('#hamburger-menu-icon').on('click', function () {
@@ -105,19 +98,11 @@ var app = app || {};
     });
   };
 
-  // function deleteSection() {
-  //   let sectionToDelete = $(this).parent().data('order');
-
-  //   app.project.allSections.splice(sectionToDelete, (sectionToDelete + 1));
-  //   app.project.updateProject(page(`/create/${app.project.project_id}/${app.project.project_name}`));
-    
-  // }
-
   createView.testHtml = project_id => {
     $.get(`${ENV.apiUrl}/app/zip/:${project_id}`)
       .then(results => console.log(results))
       .catch(console.error)
-  }
+  };
   
   module.createView = createView;
 
