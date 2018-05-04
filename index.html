@@ -118,6 +118,40 @@
                 </article>
             </section>
         </script>
+        <script id="template-six" type="text/x-handlebars-template">
+            <section id="order-{{order}}" class="cols-1-article-text-left">
+                <article>
+                    <img src="./assets/img/fozzie-web-builder-logo-with-background.png" alt="img alt">
+                    <div class="text-container">
+                        <h2>Title</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            dummy text.
+                        </p>
+                        <div class="cta-container">
+                            <a class="lite-cta" href="#">Lite CTA</a>
+                            <a class="btn-cta" href="#">Main CTA</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </script>
+        <script id="template-seven" type="text/x-handlebars-template">
+            <section id="order-{{order}}" class="cols-1-article-img-text-bottom">
+                <article>
+                    <img src="./assets/img/fozzie-web-builder-horizontal-logo.jpg" alt="img alt">
+                    <div class="text-container">
+                        <h2>Title</h2>
+                        <p>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard
+                            dummy text.
+                        </p>
+                        <div class="cta-container">
+                            <a class="lite-cta" href="#">Lite CTA</a>
+                            <a class="btn-cta" href="#">Main CTA</a>
+                        </div>
+                    </div>
+                </article>
+            </section>
+        </script>
         <script id="edit-section-list" type="text/x-handlebars-template">
             <li class="section-edit" data-order="{{order}}">Section {{order}}<span class="delete-section"><i class="fas fa-trash-alt"></i></span></li>
         </script>
@@ -133,11 +167,13 @@
             <i class="fas fa-times"></i>
         </div>
         <ul id="template-list">
-            <li data-cols="template1">Template 1</li>
-            <li data-cols="template2">Template 2</li>
-            <li data-cols="template3">Template 3</li>
-            <li data-cols="template4">Template 4</li>
-            <li data-cols="template5">Template 5</li>
+            <li data-cols="template1">One Full Width Image</li>
+            <li data-cols="template2">Two Images</li>
+            <li data-cols="template3">Three Images</li>
+            <li data-cols="template4">Two Images with Text</li>
+            <li data-cols="template5">Image and Text to the Right</li>
+            <li data-cols="template6">Image and Text to the Left</li>
+            <li data-cols="template7">Full Width Image with Text Underneath</li>
         </ul>
         <ul id="section-list">
             <li><h3>Current Sections (<span id="section-count">0</span>)</h3></li>

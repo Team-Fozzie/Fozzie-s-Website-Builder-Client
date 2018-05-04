@@ -58,7 +58,7 @@ var app = app || {};
     $('section#web-builder-view').show();
     $('section#web-builder-view').children().show();
     $('body').css('background', '#ffffff');
-    $('#section-list').show();
+    // $('#section-list').show();
     
     
     if (ctx.params.project_id) {
