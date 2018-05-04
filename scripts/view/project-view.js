@@ -14,6 +14,8 @@ var app = app || {};
     $('section').hide();
     $('#project-view ul').empty();
     $('#project-view').show();
+    $('#section-list').hide();
+    $('body').css('background', '#06aaf6');
 
     $.get(`${ENV.apiUrl}/user/projects/${ctx.params.user_id}`)
       .then(result => {
@@ -27,37 +29,103 @@ var app = app || {};
         $('#project-view ul').append(template(ctx.params));
       })
       .then(()=> {
-        $('.edit-project').on('click', function(event) {
-          let projectName = $(this).parent().find('a').text();
-          let projectId = $(this).parent().data('projectid');
-          console.log(projectId);
-          $(this).parent().append($('<input>').val(projectName));
-
-          $('input').on('change', function(event){
-            let newProjectName = $(this).val();
-            console.log(newProjectName);
-
-            $.ajax({
-              url:`${ENV.apiUrl}/app/project/${projectId}`,
-              method:'PUT',
-              data: {
-                project_name:newProjectName
-              }
-            })
-              .then(
-                // projectView.initProjectView()
-                page(`/projects/${app.user.user_id}`)
-                //write code to change
-              );
-          });
-
-          // let newName = $.put('path', input.val().
-        });
-
-
-      })
-      .catch(console.error());
+        $('.download-project').on('click', projectView.downloadProject);
+        $('.edit-project').on('click', projectView.editProjectName); 
+        $('.delete-project').on('click', projectView.deleteProject);
+        $('li.add-new-project').on('click', projectView.addNewProject);
+      });
   };
+
+  projectView.downloadProject = function() {
+    let projectid = $(this).parent().data('projectid');
+    console.log(projectid);
+    new JSZip.external.Promise(function (resolve, reject) {
+      JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectid}`, function (err, data) {
+        if (err) {
+          reject(err);
+        } else {
+          resolve(data);
+        }
+      });
+    }).then(function (data) {
+      console.log('"data" from server: ', data);
+      return JSZip.loadAsync(data, { createFolders: true });
+    })
+      .then(results => console.log(results))
+      .catch(console.error);
+  };
+
+  projectView.editProjectName = function() {
+    let projectid = $(this).parent().data('projectid');
+    let projectName = $(this).parent().find('a').text();
+    console.log(projectid);
+    $(this).parent().append($('<input>').val(projectName));
+
+    $('input').on('change', function (event) {
+      let newProjectName = $(this).val();
+
+      $.ajax({
+        url: `${ENV.apiUrl}/app/project/${projectid}`,
+        method: 'PUT',
+        data: {
+          project_name: newProjectName
+        }
+      })
+        .then(function () {
+          page(`/projects/${app.user.user_id}`)
+        })
+        .catch(console.error);
+    });
+  };
+
+  projectView.deleteProject = function() {
+    let projectid = $(this).parent().data('projectid');
+
+    $.ajax({
+      url: `${ENV.apiUrl}/app/user/projects/delete/${projectid}`,
+      method: 'DELETE'
+    })
+      .then(function() {
+        page(`/projects/${app.user.user_id}`)
+      })
+      .catch(console.error);
+  };
+
+  projectView.addNewProject = function() {
+    $(this).parent().append($('<input>').val('Project Name Hear')); 
+
+    $('input').on('change', function (event) {
+      let projectName = $(this).val();
+
+      $.ajax({
+        url: `${ENV.apiUrl}/app/project/new/${projectName}`,
+        method: 'POST',
+        data: {
+          user_id: app.user.user_id
+        }
+      })
+      .then(function() {
+        page(`/projects/${app.user.user_id}`)
+      })
+      .catch(console.error);
+    });
+  };
+
+  // downloadProject = function() {
+  //   new JSZip.external.Promise(function (resolve, reject) {
+  //     JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectId}`, function (err, data) {
+  //       if (err) {
+  //         reject(err);
+  //       } else {
+  //         resolve(data);
+  //       }
+  //     });
+  //   }).then(function (data) {
+  //     return JSZip.loadAsync(data);
+  //   })
+  //     .then(results=> console.log(results))
+  //     .catch(console.error);
+  // }
 
 
   // };

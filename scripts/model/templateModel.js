@@ -13,6 +13,10 @@ var app = app || {};
   templates.template3 = Handlebars.compile($('#template-three').text());
   templates.template4 = Handlebars.compile($('#template-four').text());
   templates.template5 = Handlebars.compile($('#template-five').text());
+  templates.template6 = Handlebars.compile($('#template-six').text());
+  templates.template7 = Handlebars.compile($('#template-seven').text());
+
+  templates.editSection = Handlebars.compile($('#edit-section-list').text());
 
   templates.templateToHtml = function(templateNum, body) {
     return this[templateNum](body);
