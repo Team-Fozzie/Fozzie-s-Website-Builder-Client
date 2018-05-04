@@ -7,8 +7,7 @@ var app = app || {};
 (function (module) {
   var createView = {};
 
-  var positionCounter = project.allSections.length - 1;
-  var currentSection = positionCounter;
+  // var currentSection = createView.positionCounter;
 
   $('#add-new-section').on('click', createSection);
 
@@ -16,59 +15,83 @@ var app = app || {};
 
   function assignTemplate() {
     let templateNum = $(this).data('cols');
-    let body = project.allSections[positionCounter].body;
+    let body = app.project.allSections[createView.positionCounter].body;
     body = app.templates.templateToHtml(templateNum, body);
 
-    project.allSections[positionCounter].body = body;
-    project.renderAll($('#web-row-container'));
+    app.project.allSections[createView.positionCounter].body = body;
+    app.project.renderAll($('#web-row-container'));
 
-    project.updateProject();
+    app.project.updateProject();
 
     $('#user-input-menu').css('left', '-33%');
   }
 
   function renderSiteHeader() {
-    if (!$('#web-row-container > header').length) {
-      positionCounter++;
-      let header = new app.Section(positionCounter, app.templates.templateToHtml('header'));
-      project.allSections.push(header);
-      project.updateProject();
-    }
+    let siteHeader = app.templates.templateToHtml('header', '');
+    $('#web-row-container').append(siteHeader);
+
+    console.log('reset the sections');
+    createView.positionCounter++;
+    let header = new app.Section(createView.positionCounter, app.templates.templateToHtml('header'));
+    app.project.allSections.push(header);
+    app.project.updateProject();
   }
 
   function createSection() {
-    positionCounter++;
+    createView.positionCounter++;
     // currentSection++;
-    let section = new app.Section(positionCounter, defaultBody);
+    let section = new app.Section(createView.positionCounter, defaultBody);
 
-    project.allSections.push(section);
-    project.renderAll($('#web-row-container'));
+    app.project.allSections.push(section);
+    app.project.updateProject();
+    app.project.renderAll($('#web-row-container'));
+    createView.renderSectionList();
 
     $('#user-input-menu').css('left', '0');
   }
 
   createView.initCreateView = function(ctx) {
-    console.log('project_id', ctx.params.project_id);
-    if (ctx.params.project_id) {
-      project = new Project(ctx.params.project_id, '');
-      project.getProject();
-      project.renderAll($('#web-row-container'));
-    } else {
-      // TODO: make new project in database.
-    }
+    
     $('section').hide();
     $('section#web-builder-view').show();
     $('section#web-builder-view').children().show();
     $('body').css('background', '#ffffff');
     $('#hamburger-menu-icon').css('color', '#003459');
-    createView.enableMenu();
-
-    // render a site header
-    renderSiteHeader();
-
-    let siteHeader = app.templates.templateToHtml('header', '');
-    $('#web-row-container').append(siteHeader);
+    
+    if (ctx.params.project_id) {
+      app.project = new app.Project(ctx.params.project_id, ctx.params.project_name);
+      app.project.getProject(createView.displayProject);
+      // app.project.updateProject();
+    } else{
+      // TODO: make new project in database.
+    }
+    createView.enableMenu(); 
   };
+
+  createView.displayProject = function() {
+    app.project.renderAll($('#web-row-container'))
+    createView.positionCounter = app.project.allSections.length - 1;
+
+    if (!$('#web-row-container > header').length) {
+      renderSiteHeader();
+    }
+
+    createView.renderSectionList();
+
+  };
+
+  createView.renderSectionList = function() {
+
+    $('#current-sections').empty();
+    $('#section-count').text(app.project.allSections.length);
+
+    let template = Handlebars.compile($('#edit-section-list').text());
+    for (var i = 1; i < app.project.allSections.length; i++) {
+      $('#current-sections').append(template(app.project.allSections[i]));
+    }
+
+    // $('.delete-section').on('click', deleteSection)
+  }
 
   createView.enableMenu = function() {
     $('#hamburger-menu-icon').on('click', function () {
@@ -78,6 +101,14 @@ var app = app || {};
       $('#user-input-menu').css('left', '-33%');
     });
   };
+
+  // function deleteSection() {
+  //   let sectionToDelete = $(this).parent().data('order');
+
+  //   app.project.allSections.splice(sectionToDelete, (sectionToDelete + 1));
+  //   app.project.updateProject(page(`/create/${app.project.project_id}/${app.project.project_name}`));
+    
+  // }
 
   createView.testHtml = project_id => {
     $.get(`${ENV.apiUrl}/app/zip/:${project_id}`)

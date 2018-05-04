@@ -29,6 +29,7 @@ var app = app || {};
         $('section.currently-selected').append(e.render());
       }
       else {
+        console.log('Are we getting HERE?')
         $(startElement).append(e.render());
       }
     })
@@ -52,18 +53,21 @@ Project.prototype.updateProject = function(callback){
 }
 
 // getting the info of a specifically selected project from the project page
-Project.prototype.getProject= function() {
+Project.prototype.getProject = function(callback) {
   $.get(`${ENV.apiUrl}/app/project/${this.project_id}`)
       .then(results => {
-          console.log(results[0]);
-          let htmlArr = JSON.parse(results[0].html);
-          console.log(htmlArr);
-          this.allSections = htmlArr.map((e, i) => {
+          if(results[0].html) {
+            let htmlArr = JSON.parse(results[0].html);
+            console.log(htmlArr);
+            app.project.allSections = htmlArr.map((e, i) => {
               return new Section(i, e)
-          })
+            })
+          }
           console.log('this', this);
           console.log(this.allSections);
-      }).catch(console.error);
+      })
+      .then(callback)
+      .catch(console.error);
 }
 // Project.getProjects = function(user_id){
 //   // $.get(`${ENV.apiUrl}/app/data/${user_id}`)
@@ -89,7 +93,7 @@ Project.prototype.getProject= function() {
 
 //TODO: TEST Project --- REMEMBER TO DELETE
 
-var project = new app.Project( 1, 'BUSMALL MEMORY GAME');
+app.project = new app.Project( 1, 'BUSMALL MEMORY GAME');
 
 
 

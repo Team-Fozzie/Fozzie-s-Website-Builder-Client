@@ -14,6 +14,8 @@ var app = app || {};
   templates.template4 = Handlebars.compile($('#template-four').text());
   templates.template5 = Handlebars.compile($('#template-five').text());
 
+  templates.editSection = Handlebars.compile($('#edit-section-list').text());
+
   templates.templateToHtml = function(templateNum, body) {
     return this[templateNum](body);
   };

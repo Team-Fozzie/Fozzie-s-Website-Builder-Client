@@ -27,7 +27,7 @@
     </script> 
     <script id="project-li-template" type="text/x-handlebars-template">
         <li data-projectid="{{project_id}}">
-            <a href="/create/{{project_id}}">{{project_name}}</a>
+            <a href="/create/{{project_id}}/{{project_name}}">{{project_name}}</a>
             <span class="edit-project"><i class="fas fa-edit"></i></span>
             <span class="delete-project"><i class="fas fa-trash-alt"></i></span>
             <span class="download-project"><i class="fas fa-download"></i></span>
@@ -147,10 +147,45 @@
                 </article>
             </section>
         </script>
+        <script id="edit-section-list" type="text/x-handlebars-template">
+            <li class="section-edit" data-order="{{order}}">Section {{order}}<span class="delete-section"><i class="fas fa-trash-alt"></i></span></li>
+        </script>
 </head>
 <!-- THIS IS THE END OF THE HEAD AND BEGINNING OF THE BODY-->
 <body>
-    <div id="hamburger-menu-icon"><i class="fas fa-bars"></i></div>
+    <nav class="top-nav">
+        <img src="fozzie-web-builder-logo" alt="">
+        <div id="hamburger-menu-icon">
+    </nav>
+        <i class="fas fa-bars"></i>
+    </div>
+    <nav id="user-input-menu">
+        <div id="menu-exit">
+            <i class="fas fa-times-circle"></i>
+        </div>
+        <ul>
+            <li data-cols="template1">Template 1</li>
+            <li data-cols="template2">Template 2</li>
+            <li data-cols="template3">Template 3</li>
+            <li data-cols="template4">Template 4</li>
+            <li data-cols="template5">Template 5</li>
+        </ul>
+    
+        <h3>Current Sections (
+            <span id="section-count">0</span>)</h3>
+        <ul id="current-sections"></ul>
+        <ul id="general-menu-items">
+            <li>
+                <a href="#">About Us</a>
+            </li>
+            <li>
+                <a href="#">Sign In</a>
+            </li>
+            <li>
+                <a href="#">Log In</a>
+            </li>
+        </ul>
+    </nav>
     <section id="home-view-login">
         <img src="./assets/img/fozzie-web-builder-logo.png" alt="fozzie web builder logo">
         <form id="home-view-login">
@@ -177,24 +212,6 @@
         <ul></ul>
     </section>
     <section id="web-builder-view">
-        <nav id="user-input-menu">
-            <div id="menu-exit"><i class="fas fa-times-circle"></i></div>
-            <ul>
-                <li data-cols="template1">Template 1</li>
-                <li data-cols="template2">Template 2</li>
-                <li data-cols="template3">Template 3</li>
-                <li data-cols="template4">Template 4</li>
-                <li data-cols="template5">Template 5</li>
-            </ul>
-
-            <h3>Current Sections (<span id="section-count">0</span>)</h3>
-            <ul id="current-sections"></ul>
-            <ul id="general-menu-items">
-                <li><a href="#">About Us</a></li>
-                <li><a href="#">Sign In</a></li>
-                <li><a href="#">Log In</a></li>
-            </ul>
-        </nav>
         <section id="web-row-container"></section>
         <section id="add-new-section" class="template">
             <div>
