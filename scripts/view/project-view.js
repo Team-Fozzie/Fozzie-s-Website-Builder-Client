@@ -38,21 +38,8 @@ var app = app || {};
 
   projectView.downloadProject = function() {
     let projectid = $(this).parent().data('projectid');
-    console.log(projectid);
-    new JSZip.external.Promise(function (resolve, reject) {
-      JSZipUtils.getBinaryContent(`${ENV.apiUrl}/app/zip/${projectid}`, function (err, data) {
-        if (err) {
-          reject(err);
-        } else {
-          resolve(data);
-        }
-      });
-    }).then(function (data) {
-      console.log('"data" from server: ', data);
-      return JSZip.loadAsync(data, { createFolders: true });
-    })
-      .then(results => console.log(results))
-      .catch(console.error);
+    
+    window.location = `${ENV.apiUrl}/app/zip/${projectid}`;
   };
 
   projectView.editProjectName = function() {
